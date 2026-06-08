@@ -38,9 +38,9 @@ export default function App() {
   };
 
   return (
-    <Layout user={user} onLogout={logout} onNavigate={(v) => setView(v as keyof typeof views)}>
+    <Layout user={user} onLogout={logout} onNavigate={(v) => setView(v as keyof typeof views)} currentView={view}>
       {message ? <p className="mt-2 text-teal-700">{message}</p> : null}
-      <section className="bg-white rounded-xl p-6 mt-6 shadow-lg">
+      <section className="bg-white rounded-xl p-6 mt-6 shadow-park-lg">
         <ActiveView onAuthenticated={handleAuthenticated} />
       </section>
     </Layout>

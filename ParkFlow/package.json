@@ -8,7 +8,14 @@
   ],
   "scripts": {
     "dev": "npm run dev --workspaces --if-present",
+    "dev:all": "npm --workspace server run db:setup && npm run dev",
+    "dev:local": "concurrently \"npm --prefix server run dev\" \"npm --prefix client run dev\"",
+    "start:prod": "npm --prefix client run build && node server/src/index.ts",
     "build": "npm run build --workspaces --if-present",
     "lint": "npm run lint --workspaces --if-present"
+  }
+  ,
+  "devDependencies": {
+    "concurrently": "^8.2.0"
   }
 }

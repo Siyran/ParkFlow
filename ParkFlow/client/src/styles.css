@@ -6,6 +6,10 @@
   --parkflow-primary: #0d9488;
   --parkflow-surface: #ffffff;
   --parkflow-border: #cbd5e1;
+  --parkflow-accent: #06b6d4;
+  --parkflow-muted: #64748b;
+  --parkflow-radius: 12px;
+  --parkflow-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
 }
 
 * {
@@ -20,9 +24,13 @@ body,
 }
 
 body {
-  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  background: linear-gradient(180deg, #f8fafc 0%, #eef2f6 100%);
   color: #0f172a;
 }
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 button {
   font: inherit;
@@ -35,4 +43,119 @@ button:hover {
 
 button:active {
   transform: translateY(0);
+}
+
+/* Layout */
+.container {
+  padding: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: var(--parkflow-surface);
+  border-radius: 18px;
+  padding: 1.25rem;
+  box-shadow: 0 8px 24px rgba(2,6,23,0.06);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: center;
+}
+
+.brand h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  letter-spacing: -0.02em;
+}
+
+.brand p {
+  margin: 0.25rem 0 0;
+  color: var(--parkflow-muted);
+  font-size: 0.9rem;
+}
+
+.nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.chip {
+  border: 1px solid var(--parkflow-border);
+  border-radius: 999px;
+  background: white;
+  color: #0f172a;
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+}
+
+.chip.active {
+  background: var(--parkflow-primary);
+  color: white;
+  border-color: transparent;
+}
+
+/* Buttons & Forms */
+.btn {
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  background: var(--parkflow-primary);
+  color: white;
+  box-shadow: 0 6px 18px rgba(13, 148, 136, 0.14);
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--parkflow-primary);
+  border: 1px solid var(--parkflow-border);
+  box-shadow: none;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+input[type="number"], input[type="text"], input[type="email"], textarea, select {
+  display: block;
+  width: 100%;
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid var(--parkflow-border);
+  background: #fbfdff;
+}
+
+.form-grid {
+  display: grid;
+  gap: 12px;
+  max-width: 420px;
+}
+
+.muted {
+  color: var(--parkflow-muted);
+}
+
+.list-clean {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list-item {
+  padding: 0.6rem 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #eef2f6;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  margin-bottom: 8px;
+}
+
+@media (max-width: 720px) {
+  .container { padding: 1rem; }
 }
