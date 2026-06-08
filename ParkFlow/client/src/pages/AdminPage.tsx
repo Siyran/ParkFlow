@@ -1,8 +1,8 @@
 export default function AdminPage() {
   return (
     <section>
-      <h2>Admin</h2>
-      <p>Approval queues, users, and revenue controls will live here.</p>
+      <h2 className="text-lg font-bold">Admin</h2>
+      <p className="text-sm text-gray-600">Admin tools: manage users, bookings, payouts, and platform settings.</p>
     </section>
   );
 }

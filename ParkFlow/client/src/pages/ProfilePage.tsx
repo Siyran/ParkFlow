@@ -1,8 +1,8 @@
 export default function ProfilePage() {
   return (
     <section>
-      <h2>Profile</h2>
-      <p>Account details and role-specific tools will live here.</p>
+      <h2 className="text-lg font-bold">Profile</h2>
+      <p className="text-sm text-gray-600">Manage your account details, view verification status, and access owner tools when available.</p>
     </section>
   );
 }

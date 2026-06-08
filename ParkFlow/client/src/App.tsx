@@ -10,6 +10,8 @@ import RegisterPage from './pages/RegisterPage';
 import SettingsPage from './pages/SettingsPage';
 import WalletPage from './pages/WalletPage';
 import AdminPage from './pages/AdminPage';
+import { useAuthSession } from './hooks/useAuthSession';
+import Layout from './components/Layout';
 
 const views = {
   home: HomePage,
@@ -27,39 +29,20 @@ const views = {
 
 export default function App() {
   const [view, setView] = useState<keyof typeof views>('home');
+  const { user, loading, logout, reloadSession, message } = useAuthSession();
   const ActiveView = views[view];
 
-  return (
-    <main style={{ padding: '2rem', maxWidth: 960, margin: '0 auto' }}>
-      <header style={{ display: 'flex', justifyContent: 'space-between', gap: 16, alignItems: 'center' }}>
-        <div>
-          <h1 style={{ margin: 0 }}>ParkFlow</h1>
-          <p style={{ margin: '0.25rem 0 0' }}>Parking marketplace scaffold ready.</p>
-        </div>
-        <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
-          {Object.keys(views).map((key) => (
-            <button
-              key={key}
-              type="button"
-              onClick={() => setView(key as keyof typeof views)}
-              style={{
-                border: '1px solid #cbd5e1',
-                borderRadius: 999,
-                background: view === key ? '#0f172a' : 'white',
-                color: view === key ? 'white' : '#0f172a',
-                padding: '0.5rem 0.85rem',
-                cursor: 'pointer',
-              }}
-            >
-              {key}
-            </button>
-          ))}
-        </div>
-      </header>
+  const handleAuthenticated = async () => {
+    await reloadSession();
+    setView('overview');
+  };
 
-      <section style={{ marginTop: '2rem', padding: '1.5rem', borderRadius: 24, background: 'white', boxShadow: '0 10px 30px rgba(15, 23, 42, 0.08)' }}>
-        <ActiveView />
+  return (
+    <Layout user={user} onLogout={logout} onNavigate={(v) => setView(v as keyof typeof views)}>
+      {message ? <p className="mt-2 text-teal-700">{message}</p> : null}
+      <section className="bg-white rounded-xl p-6 mt-6 shadow-lg">
+        <ActiveView onAuthenticated={handleAuthenticated} />
       </section>
-    </main>
+    </Layout>
   );
 }
