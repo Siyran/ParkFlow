@@ -1,4 +1,5 @@
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import express from 'express';
 import helmet from 'helmet';
 import { env } from './env.ts';
@@ -10,6 +11,7 @@ export function createApp() {
 
   app.use(helmet());
   app.use(cors({ origin: env.frontendUrl, credentials: true }));
+  app.use(cookieParser());
   app.use(express.json());
 
   registerRoutes(app);

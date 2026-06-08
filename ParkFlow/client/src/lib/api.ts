@@ -31,5 +31,5 @@ export function verifyOtp(payload: { email: string; otp: string }) {
 }
 
 export function loginAccount(payload: { email: string; password: string }) {
-  return request<{ user: unknown; accessToken: string; refreshToken: string }>('/api/auth/login', payload);
+  return request<{ user: unknown }>('/api/auth/login', payload);
 }

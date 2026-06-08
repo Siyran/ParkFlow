@@ -6,6 +6,11 @@ CREATE TABLE users (
   phone TEXT,
   role TEXT NOT NULL CHECK (role IN ('user', 'owner', 'admin')),
   wallet_balance NUMERIC(12,2) NOT NULL DEFAULT 0,
+  verified_at TIMESTAMPTZ,
+  otp_code_hash TEXT,
+  otp_expires_at TIMESTAMPTZ,
+  refresh_token_hash TEXT,
+  refresh_token_expires_at TIMESTAMPTZ,
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 

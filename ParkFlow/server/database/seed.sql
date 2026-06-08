@@ -1,7 +1,7 @@
-INSERT INTO users (name, email, password_hash, phone, role, wallet_balance)
+INSERT INTO users (name, email, password_hash, phone, role, wallet_balance, verified_at)
 VALUES
-  ('Demo Owner', 'owner1@parkflow.local', 'hash', '9900000001', 'owner', 0),
-  ('Demo User', 'user1@parkflow.local', 'hash', '9900000002', 'user', 0);
+  ('Demo Owner', 'owner1@parkflow.local', '$2b$12$KIX/0i1Y7X5v1h9o7C3K4eX0z1VQh7i5n1lK9mQm5rZ2Q9p1m5q1e', '9900000001', 'owner', 0, NOW()),
+  ('Demo User', 'user1@parkflow.local', '$2b$12$KIX/0i1Y7X5v1h9o7C3K4eX0z1VQh7i5n1lK9mQm5rZ2Q9p1m5q1e', '9900000002', 'user', 0, NOW());
 
 INSERT INTO parking_spots (owner_id, name, address, latitude, longitude, type, total_slots, available_slots, is_active)
 VALUES

@@ -25,3 +25,8 @@ npm run dev
 - `client/` contains the frontend scaffold.
 - `server/` contains the backend scaffold.
 - `server/database/` contains the SQL schema and demo seed data.
+
+## Auth
+
+Auth now uses Postgres-backed users with JWT access and refresh cookies.
+Set the values in `.env.example` before running the server locally.
